@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     navigator.clipboard
       .writeText(responseText)
       .then(() => {
-        alert(responseText + "\nCopied to clipboard!");
+        alert("Copied to clipboard! \n\n Please hire me already :'(");
       })
       .catch((err) => {
         console.error("Failed to copy: ", err);
