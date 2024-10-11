@@ -106,6 +106,7 @@ p {
 
 @media (max-width: 800px) {
     .container {
+        width: 70%;
         padding: 3rem;
     }
 
@@ -114,9 +115,9 @@ p {
         opacity: 0;
     }
     .resp {
-        width: 94%;
+        width: 100%;
         height: auto;
-        padding: 1rem;
+        /* padding: 1rem; */
         flex-direction: column;
         justify-content: center;
         align-items: center;
