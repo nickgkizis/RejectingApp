@@ -50,6 +50,7 @@ body {
 h1 {
     color: white;
     margin-bottom: 1rem;
+    text-align:center
 }
 
 .buttons {
@@ -105,11 +106,15 @@ p {
 
 @media (max-width: 800px) {
     .container {
-        padding: 1rem;
+        padding: 3rem;
     }
 
+    
+    #copy { 
+        opacity: 0;
+    }
     .resp {
-        width: 100%;
+        width: 94%;
         height: auto;
         padding: 1rem;
         flex-direction: column;
