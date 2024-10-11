@@ -18,7 +18,7 @@ body {
 .container {
     text-align: center;
     padding: 2rem;
-    background-color:#5a082d;
+    background-color: #5a082d;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
@@ -33,7 +33,7 @@ body {
     background-color: rgb(231, 220, 220);
     position: relative;
     border-radius: 10px;
-    background-color:#9d0b28 ;
+    background-color: #9d0b28;
     color: white;
 }
 
@@ -41,7 +41,7 @@ body {
     background-color: transparent;
     position: absolute; 
     border-style: none;
-    top:23%; 
+    top: 23%; 
     right: 2rem;
     cursor: pointer;
     color: #33030d;
@@ -63,9 +63,9 @@ h1 {
 .bt {
     padding: 0.7rem 1.5rem;
     font-size: 2rem;
-    background-color:#ff004d;
+    background-color: #ff004d;
     color: white;
-    border:1px solid transparent;
+    border: 1px solid transparent;
     border-radius: 5px;
     cursor: pointer;
     transition: all 1s;
@@ -73,11 +73,11 @@ h1 {
 
 button:hover {
     background-color: #5a082d;
-    border:1px solid;
+    border: 1px solid;
     scale: 1.1;
 }
 
-button:active{
+button:active {
     opacity: 0.5;
 }
 
@@ -101,5 +101,39 @@ i:hover {
 p {
     padding: 0 10rem;
     font-size: 2rem;
-    
+}
+
+@media (max-width: 800px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .resp {
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .bt {
+        padding: 0.5rem 1rem;
+        font-size: 1.5rem;
+    }
+
+    p {
+        padding: 1rem;
+        font-size: 1.5rem;
+    }
+
+    i {
+        font-size: 2.5rem;
+    }
 }
