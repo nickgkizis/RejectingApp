@@ -3,12 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Random Rejection Generator</title>
+  <title>Answer Generator</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Random Rejection Generator</h1>
+    <div class="title-container">
+        <h1 id="title">Rejecting Mode</h1>
+        <h1 id="icon"><i class='fa-regular fa-circle-xmark'></i></h1>
+    </div>
+    
     <div class="container">
         <div class="resp">
             <p id="response"></p>
@@ -20,6 +24,14 @@
             <button class="bt" id="humorous">Humorous</button>
             <button class="bt" id="empathetic">Empathetic</button>
             <button class="bt" id="blunt">Blunt</button>
+        </div>
+
+        <div class="toggle">
+            <label class="switch">
+              <input type="checkbox" id="mode-toggle">
+              <span class="slider"></span>
+            </label>
+            <p id="toggle-text">Rejecting Mode</p>
         </div>
     </div>
 

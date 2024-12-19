@@ -1,52 +1,66 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const toggleTitle = document.getElementById("title");
+  const toggleIcon = document.getElementById("icon");
   const responseElement = document.getElementById("response");
   const copyButton = document.getElementById("copy");
+  const modeToggle = document.getElementById("mode-toggle");
+  const toggleText = document.getElementById("toggle-text");
+  const body = document.body;
+
+  // Default mode: Rejecting
+  let currentMode = "rejecting";
+
+  let responses = {}; // Placeholder for the loaded JSON data
 
   // Function to generate random responses
-  function generateResponse(responses) {
-    const randomIndex = Math.floor(Math.random() * responses.length);
-    const randomResponse = responses[randomIndex];
-    responseElement.textContent = randomResponse;
-
-    // Show the Copy button once a response is generated
+  function generateResponse(responsesList) {
+    const randomIndex = Math.floor(Math.random() * responsesList.length);
+    responseElement.textContent = responsesList[randomIndex];
     copyButton.style.display = "inline-block";
   }
 
-  // Fetch the responses from the JSON file
+  // Toggle between rejecting and accepting modes
+  modeToggle.addEventListener("change", () => {
+    if (modeToggle.checked) {
+      currentMode = "accepting";
+      responseElement.textContent = "";
+      toggleIcon.innerHTML = "<i class='fa-solid fa-check'></i>";
+      toggleTitle.textContent = "Accepting Mode";
+      toggleText.textContent = "Accepting";
+      body.style.setProperty("--response-bg", "#0b9d28");
+      body.style.setProperty("--button-bg", "#4caf50");
+    } else {
+      currentMode = "rejecting";
+      responseElement.textContent = "";
+      toggleIcon.innerHTML = "<i class='fa-regular fa-circle-xmark'></i>";
+      toggleTitle.textContent = "Rejecting Mode";
+      toggleText.textContent = "Rejecting";
+      body.style.setProperty("--response-bg", "#9d0b28");
+      body.style.setProperty("--button-bg", "#ff004d");
+    }
+  });
+
+  // Load the responses from the JSON file
   fetch("responses.json")
     .then((response) => response.json())
     .then((data) => {
-      // Add event listeners for buttons after JSON data is loaded
-      document.getElementById("professional").addEventListener("click", () => {
-        generateResponse(data.professional);
-      });
+      responses = data;
 
-      document.getElementById("humorous").addEventListener("click", () => {
-        generateResponse(data.humorous);
-      });
-
-      document.getElementById("empathetic").addEventListener("click", () => {
-        generateResponse(data.empathetic);
-      });
-
-      document.getElementById("blunt").addEventListener("click", () => {
-        generateResponse(data.blunt);
-      });
+      // Add event listeners for response generation buttons
+      ["professional", "humorous", "empathetic", "blunt"].forEach(
+        (category) => {
+          document.getElementById(category).addEventListener("click", () => {
+            generateResponse(responses[currentMode][category]);
+          });
+        }
+      );
     })
-    .catch((err) => console.error("Failed to load JSON: ", err));
+    .catch((err) => console.error("Failed to load JSON file: ", err));
 
   // Copy to clipboard functionality
   copyButton.addEventListener("click", () => {
-    const responseText = responseElement.textContent;
-
-    // Copy the text to the clipboard
-    navigator.clipboard
-      .writeText(responseText)
-      .then(() => {
-        alert("Copied to clipboard! \n\n Please hire me already :'(");
-      })
-      .catch((err) => {
-        console.error("Failed to copy: ", err);
-      });
+    navigator.clipboard.writeText(responseElement.textContent).then(() => {
+      alert("Copied to clipboard!");
+    });
   });
 });

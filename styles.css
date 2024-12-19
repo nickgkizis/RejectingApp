@@ -1,3 +1,4 @@
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -23,18 +24,34 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
+.title-container {
+    padding: 2rem;
+    background-color: #5a082d;
+    border-radius: 10px;
+    margin-bottom: 2%;
+    animation: bounce 4s ease-in-out infinite; /* Add bounce animation */
+}
+
+
+#icon{
+    font-size: 3rem;
+    margin: 0;
+    padding: 0;
+}
+
 .resp {
-    width: 60rem;
+    width: 90rem;
     height: 10rem;
+    font-size: 2rem;
+    padding: 2rem;
     display: flex;
     flex-direction: row;
     justify-content: center; 
     align-items: center; 
-    background-color: rgb(231, 220, 220);
     position: relative;
     border-radius: 10px;
-    background-color: #9d0b28;
     color: white;
+    background-color: var(--response-bg, #9d0b28); /* Dynamic background color */
 }
 
 #copy {
@@ -50,7 +67,7 @@ body {
 h1 {
     color: white;
     margin-bottom: 1rem;
-    text-align:center
+    text-align: center;
 }
 
 .buttons {
@@ -64,7 +81,7 @@ h1 {
 .bt {
     padding: 0.7rem 1.5rem;
     font-size: 2rem;
-    background-color: #ff004d;
+    background-color: var(--button-bg, #ff004d); /* Dynamic button background color */
     color: white;
     border: 1px solid transparent;
     border-radius: 5px;
@@ -82,45 +99,91 @@ button:active {
     opacity: 0.5;
 }
 
-i {
-    width: 3.5rem;
-    height: 3.5rem;
-    font-size: 3.5rem;
-    padding: 1rem;
+.toggle {
+    margin-top: 2rem;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #9d0b28;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: pink;
+    transition: 0.4s;
     border-radius: 50%;
-    border: 1px solid transparent;
-    transition: all 1s;
 }
 
-i:hover {
-    color: white;
-    border: 1px solid;
-    border-radius: 50%;
-    scale: 1.1;
+input:checked + .slider {
+    background-color: #4caf50;
 }
 
-p {
-    padding: 0 10rem;
-    font-size: 2rem;
-}
-
-@media (max-width: 800px) {
-    .container {
-        width: 70%;
-        padding: 3rem;
-    }
-
+input:checked + .slider:before {
     
-    #copy { 
-        opacity: 0;
+    transform: translateX(26px);
+}
+
+#toggle-text {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    color: white;
+}
+
+/* Bounce animation */
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
     }
+    25% {
+        transform: translateY(-30px);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    75% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+
+/* Mobile Responsiveness */
+@media (max-width: 1200px) {
+    .container {
+        width: 90%;
+        padding: 2rem;
+    }
+
     .resp {
-        width: 100%;
+        width: 93%;
         height: auto;
-        /* padding: 1rem; */
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
         font-size: 1.5rem;
     }
 
@@ -130,7 +193,6 @@ p {
     }
 
     .bt {
-        padding: 0.5rem 1rem;
         font-size: 1.5rem;
     }
 
@@ -138,8 +200,32 @@ p {
         padding: 1rem;
         font-size: 1.5rem;
     }
+}
 
-    i {
-        font-size: 2.5rem;
+@media (max-width: 600px) {
+    .container {
+        width: 80%;
+        padding: 2rem;
+    }
+
+    .resp {
+        width: 85%;
+        height: auto;
+        flex-direction: column;
+        font-size: 1.5rem;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .bt {
+        font-size: 1.5rem;
+    }
+
+    p {
+        padding: 1rem;
+        font-size: 1.5rem;
     }
 }
